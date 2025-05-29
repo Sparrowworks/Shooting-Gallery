@@ -1,29 +1,26 @@
-# Shooting Gallery
-A remake of the old Shooting Range game made in Godot.
+# [Shooting Gallery](https://sparrowworks.itch.io/shooting-gallery)
 
-Play the game here: https://sp4r0w.itch.io/shooting-gallery
+## A point and shoot game made in Godot
 
-### About
--------------
-This is a small project I made in Godot 4. It's a remake of the old Shooting range games I made way back in Python and Lua. This is the final version. <br>
-I tried to add much more detail and animations to this project and I'm quite happy with it. <br>
-The game uses a "script" system for each level, which means it's really easy to add new waves and script them. <br>
+### Description
+This is a simple point and shoot game made in Godot-4. It features lots of improvements and changes over the old version.
+List of changes:
+- Rewritten code, smoother, faster gameplay with less bugs
+- Revamped the old script system for levels (more reliability, less bugs)
+- New highscore system with some new statistics saved
+- Improved menus and UI
 
-### Getting Started
--------------
-To compile this project, you will need at least Godot v4.0.3. Do not forget you will need the required export templates. <br> 
-More in-depth guide is avaiable here: https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html <br>
-You're free to modify the project as you wish.
+The old version is available in a separate branch for archive purposes.
 
 ### Credits
--------------
-I will only list some credits here, as the full list is in the game itself, in the Credits menu. <br>
-Thanks to DipShtick (Varga) testing. <br>
-Graphical assets were made by Kenney (https://kenney.nl/) <br>
+This project uses an addon for saving for Godot, found here: https://github.com/AdamKormos/SaveMadeEasy
 
-### Preview
--------------
-![Screenshot 1](images/screen1.png)
-![Screenshot 2](images/screen2.png)
+### Installation
+- This game is playable on the [Itch](https://sparrowworks.itch.io/shooting-gallery) page.
+- Download the project from [Itch](https://sparrowworks.itch.io/shooting-gallery) and follow the instructions on how to play the game.
+- You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) or download the repository and play it through Godot Editor.
 
-Play the game here: https://sp4r0w.itch.io/shooting-gallery
+### Screenshots
+<img src="https://img.itch.zone/aW1hZ2UvMjA3MDcyMy8yMTQyNzQ2MC5wbmc=/original/Ykp2iq.png">
+<img src="https://img.itch.zone/aW1hZ2UvMjA3MDcyMy8yMTQyNzQ1OC5wbmc=/original/VnTms9.png">
+<img src="https://img.itch.zone/aW1hZ2UvMjA3MDcyMy8yMTQyNzQ1OS5wbmc=/original/59U5rK.png">
