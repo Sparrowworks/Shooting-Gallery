@@ -1,0 +1,247 @@
+[gd_scene load_steps=11 format=3 uid="uid://cd21pk4luk81b"]
+
+[ext_resource type="Script" uid="uid://6ulpsdc4g2kh" path="res://src/Transition/curtain_transition.gd" id="1_kcy1y"]
+[ext_resource type="Texture2D" uid="uid://dwdqxvc8abxx6" path="res://assets/images/UI/curtainTop.png" id="2_r253i"]
+[ext_resource type="Texture2D" uid="uid://chwmlb8fl138y" path="res://assets/images/UI/curtainStraight.png" id="2_xijel"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="4_kcy1y"]
+
+[sub_resource type="Animation" id="Animation_xijel"]
+resource_name = "CurtainFallFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CurtainTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.434671, 8.57419),
+"update": 0,
+"values": [Vector2(0, 62), Vector2(0, 2081)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/CurtainStraight:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.434671, 8.57419),
+"update": 0,
+"values": [Vector2(3840, 64), Vector2(3840, 2082)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/FadeRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a3cuk"]
+resource_name = "CurtainRise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CurtainTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.434671),
+"update": 0,
+"values": [Vector2(0, 2081), Vector2(0, 62)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/CurtainStraight:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.434671),
+"update": 0,
+"values": [Vector2(3840, 2082), Vector2(3840, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_o7rld"]
+resource_name = "CurtainRiseFade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CurtainTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.434671),
+"update": 0,
+"values": [Vector2(0, 2081), Vector2(0, 62)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/CurtainStraight:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.434671),
+"update": 0,
+"values": [Vector2(3840, 2082), Vector2(3840, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/FadeRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p1fht"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/FadeRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kcy1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/CurtainTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 62)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/CurtainStraight:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3840, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/FadeRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p1fht"]
+_data = {
+&"CurtainFallFade": SubResource("Animation_xijel"),
+&"CurtainRise": SubResource("Animation_a3cuk"),
+&"CurtainRiseFade": SubResource("Animation_o7rld"),
+&"FadeOut": SubResource("Animation_p1fht"),
+&"RESET": SubResource("Animation_kcy1y")
+}
+
+[node name="CurtainTransition" type="CanvasLayer"]
+script = ExtResource("1_kcy1y")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CurtainTop" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -79.0
+offset_right = 1920.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_r253i")
+stretch_mode = 1
+
+[node name="CurtainStraight" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2082.0
+texture = ExtResource("2_xijel")
+stretch_mode = 1
+
+[node name="FadeRect" type="ColorRect" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingText" type="Label" parent="Control"]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1244.0
+offset_top = -98.5
+offset_right = 1244.0
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_kcy1y")
+theme_override_font_sizes/font_size = 196
+text = "PLEASE WAIT, LOADING GAME..."
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_p1fht")
+}

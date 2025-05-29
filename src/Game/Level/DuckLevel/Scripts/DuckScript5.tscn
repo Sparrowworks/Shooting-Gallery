@@ -1,0 +1,152 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jhqkv6v4j70"]
+
+[ext_resource type="PackedScene" uid="uid://csrorkdlsowhi" path="res://src/Game/GameScript/GameScript.tscn" id="1_qc4wn"]
+[ext_resource type="Script" uid="uid://cm68pujkgjvis" path="res://src/Game/Level/DuckLevel/Scripts/duck_script_5.gd" id="2_qlcgj"]
+[ext_resource type="PackedScene" uid="uid://cnjn2666uqjew" path="res://src/Game/Enemy/Duck/Duck.tscn" id="3_25gqi"]
+
+[node name="DuckScript5" instance=ExtResource("1_qc4wn")]
+script = ExtResource("2_qlcgj")
+enemy_scene = ExtResource("3_25gqi")
+
+[node name="Duration" parent="." index="0"]
+wait_time = 30.0
+
+[node name="SpawnUp" type="Timer" parent="." index="1"]
+wait_time = 2.5
+
+[node name="SpawnDown" type="Timer" parent="." index="2"]
+wait_time = 3.5
+
+[node name="Left" type="Timer" parent="." index="3"]
+wait_time = 1.5
+
+[node name="Right" type="Timer" parent="." index="4"]
+wait_time = 2.0
+
+[node name="DuckZone2" type="Marker2D" parent="." index="5"]
+z_index = 4
+y_sort_enabled = true
+position = Vector2(100, 1250)
+
+[node name="DuckZone1" type="Marker2D" parent="." index="6"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(3740, 1350)
+
+[node name="PositionsUp" type="Node2D" parent="." index="7"]
+z_index = 4
+position = Vector2(250, 0)
+
+[node name="1" type="Marker2D" parent="PositionsUp" index="0"]
+position = Vector2(500, 1250)
+
+[node name="2" type="Marker2D" parent="PositionsUp" index="1"]
+position = Vector2(650, 1250)
+
+[node name="3" type="Marker2D" parent="PositionsUp" index="2"]
+position = Vector2(800, 1250)
+
+[node name="4" type="Marker2D" parent="PositionsUp" index="3"]
+position = Vector2(950, 1250)
+
+[node name="5" type="Marker2D" parent="PositionsUp" index="4"]
+position = Vector2(1100, 1250)
+
+[node name="6" type="Marker2D" parent="PositionsUp" index="5"]
+position = Vector2(1250, 1250)
+
+[node name="7" type="Marker2D" parent="PositionsUp" index="6"]
+position = Vector2(1400, 1250)
+
+[node name="8" type="Marker2D" parent="PositionsUp" index="7"]
+position = Vector2(1550, 1250)
+
+[node name="9" type="Marker2D" parent="PositionsUp" index="8"]
+position = Vector2(1700, 1250)
+
+[node name="10" type="Marker2D" parent="PositionsUp" index="9"]
+position = Vector2(1850, 1250)
+
+[node name="11" type="Marker2D" parent="PositionsUp" index="10"]
+position = Vector2(2000, 1250)
+
+[node name="12" type="Marker2D" parent="PositionsUp" index="11"]
+position = Vector2(2150, 1250)
+
+[node name="13" type="Marker2D" parent="PositionsUp" index="12"]
+position = Vector2(2300, 1250)
+
+[node name="14" type="Marker2D" parent="PositionsUp" index="13"]
+position = Vector2(2450, 1250)
+
+[node name="15" type="Marker2D" parent="PositionsUp" index="14"]
+position = Vector2(2600, 1250)
+
+[node name="16" type="Marker2D" parent="PositionsUp" index="15"]
+position = Vector2(2750, 1250)
+
+[node name="17" type="Marker2D" parent="PositionsUp" index="16"]
+position = Vector2(2900, 1250)
+
+[node name="PositionsDown" type="Node2D" parent="." index="8"]
+z_index = 5
+position = Vector2(175, 100)
+
+[node name="1" type="Marker2D" parent="PositionsDown" index="0"]
+position = Vector2(500, 1250)
+
+[node name="2" type="Marker2D" parent="PositionsDown" index="1"]
+position = Vector2(650, 1250)
+
+[node name="3" type="Marker2D" parent="PositionsDown" index="2"]
+position = Vector2(800, 1250)
+
+[node name="4" type="Marker2D" parent="PositionsDown" index="3"]
+position = Vector2(950, 1250)
+
+[node name="5" type="Marker2D" parent="PositionsDown" index="4"]
+position = Vector2(1100, 1250)
+
+[node name="6" type="Marker2D" parent="PositionsDown" index="5"]
+position = Vector2(1250, 1250)
+
+[node name="7" type="Marker2D" parent="PositionsDown" index="6"]
+position = Vector2(1400, 1250)
+
+[node name="8" type="Marker2D" parent="PositionsDown" index="7"]
+position = Vector2(1550, 1250)
+
+[node name="9" type="Marker2D" parent="PositionsDown" index="8"]
+position = Vector2(1700, 1250)
+
+[node name="10" type="Marker2D" parent="PositionsDown" index="9"]
+position = Vector2(1850, 1250)
+
+[node name="11" type="Marker2D" parent="PositionsDown" index="10"]
+position = Vector2(2000, 1250)
+
+[node name="12" type="Marker2D" parent="PositionsDown" index="11"]
+position = Vector2(2150, 1250)
+
+[node name="13" type="Marker2D" parent="PositionsDown" index="12"]
+position = Vector2(2300, 1250)
+
+[node name="14" type="Marker2D" parent="PositionsDown" index="13"]
+position = Vector2(2450, 1250)
+
+[node name="15" type="Marker2D" parent="PositionsDown" index="14"]
+position = Vector2(2600, 1250)
+
+[node name="16" type="Marker2D" parent="PositionsDown" index="15"]
+position = Vector2(2750, 1250)
+
+[node name="17" type="Marker2D" parent="PositionsDown" index="16"]
+position = Vector2(2900, 1250)
+
+[node name="18" type="Marker2D" parent="PositionsDown" index="17"]
+position = Vector2(3050, 1250)
+
+[connection signal="timeout" from="SpawnUp" to="." method="_on_spawn_up_timeout"]
+[connection signal="timeout" from="SpawnDown" to="." method="_on_spawn_down_timeout"]
+[connection signal="timeout" from="Left" to="." method="_on_left_timeout"]
+[connection signal="timeout" from="Right" to="." method="_on_right_timeout"]

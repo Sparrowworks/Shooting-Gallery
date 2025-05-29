@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbr3ncv3vsc0q"]
+
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_gn7fr"]
+[ext_resource type="Script" uid="uid://cjsywb4a75yyd" path="res://src/Menus/LevelSelect/level_select.gd" id="1_ra380"]
+[ext_resource type="Texture2D" uid="uid://b4sou7ikgwhl3" path="res://assets/images/UI/panel.png" id="2_p0myq"]
+[ext_resource type="Texture2D" uid="uid://c5sugdifoey44" path="res://assets/images/UI/money.png" id="3_7xy8w"]
+[ext_resource type="PackedScene" uid="uid://caq8tw3utr1t4" path="res://src/Menus/LevelSelect/LevelButton/LevelButton.tscn" id="4_xow0l"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="5_ra380"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="6_gi4c7"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="7_pneq0"]
+
+[node name="LevelSelect" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ra380")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 457.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_gn7fr")
+theme_override_font_sizes/font_size = 256
+text = "select a level:"
+horizontal_alignment = 1
+
+[node name="MoneyPanel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 375.0
+offset_right = 575.0
+offset_bottom = 500.0
+texture = ExtResource("2_p0myq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MoneyPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MoneyPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_7xy8w")
+stretch_mode = 2
+
+[node name="MoneyText" type="Label" parent="MoneyPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_gn7fr")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[node name="LevelButton" parent="." instance=ExtResource("4_xow0l")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -675.0
+offset_top = -629.0
+offset_right = 675.0
+offset_bottom = 629.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -406.0
+offset_right = 192.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="ShopButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("5_ra380")
+texture_pressed = ExtResource("6_gi4c7")
+texture_hover = ExtResource("7_pneq0")
+
+[node name="Label" type="Label" parent="Buttons/ShopButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_gn7fr")
+theme_override_font_sizes/font_size = 72
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("5_ra380")
+texture_pressed = ExtResource("6_gi4c7")
+texture_hover = ExtResource("7_pneq0")
+
+[node name="Label" type="Label" parent="Buttons/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_gn7fr")
+theme_override_font_sizes/font_size = 72
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="next_pressed" from="LevelButton" to="." method="_on_level_button_next_pressed"]
+[connection signal="normal_pressed" from="LevelButton" to="." method="_on_level_button_normal_pressed"]
+[connection signal="prev_pressed" from="LevelButton" to="." method="_on_level_button_prev_pressed"]
+[connection signal="ta_pressed" from="LevelButton" to="." method="_on_level_button_ta_pressed"]
+[connection signal="pressed" from="Buttons/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Buttons/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,223 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccsn74mnyq50y"]
+
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_4kj6r"]
+[ext_resource type="Script" uid="uid://cragbafgd47h6" path="res://src/Menus/Settings/settings.gd" id="1_pgbml"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="2_gh2k4"]
+[ext_resource type="Texture2D" uid="uid://b2n0uicwudrwt" path="res://assets/images/UI/tick.png" id="2_pgbml"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="3_pgbml"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="4_x2klw"]
+[ext_resource type="PackedScene" uid="uid://bn7gd8yi556ll" path="res://src/Menus/MessagePanel/MessagePanel.tscn" id="7_x2klw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2klw"]
+bg_color = Color(1, 0.392157, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0.392157, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 4
+
+[node name="Settings" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pgbml")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 606.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 256
+text = "SETTINGS:"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -306.0
+offset_right = 192.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Master" type="VBoxContainer" parent="Buttons"]
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="MasterText" type="Label" parent="Buttons/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 96
+text = "master volume: 100"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Buttons/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("2_pgbml")
+theme_override_icons/grabber_highlight = ExtResource("2_pgbml")
+theme_override_styles/slider = SubResource("StyleBoxFlat_x2klw")
+
+[node name="Music" type="VBoxContainer" parent="Buttons"]
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="MusicText" type="Label" parent="Buttons/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 96
+text = "MUSIC volume: 100"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Buttons/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("2_pgbml")
+theme_override_icons/grabber_highlight = ExtResource("2_pgbml")
+theme_override_styles/slider = SubResource("StyleBoxFlat_x2klw")
+
+[node name="SFX" type="VBoxContainer" parent="Buttons"]
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="SfxText" type="Label" parent="Buttons/SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 96
+text = "SFX volume: 100"
+horizontal_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="Buttons/SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("2_pgbml")
+theme_override_icons/grabber_highlight = ExtResource("2_pgbml")
+theme_override_styles/slider = SubResource("StyleBoxFlat_x2klw")
+
+[node name="Buttons" type="HBoxContainer" parent="Buttons"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="ReloadButton" type="TextureButton" parent="Buttons/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_gh2k4")
+texture_pressed = ExtResource("3_pgbml")
+texture_hover = ExtResource("4_x2klw")
+
+[node name="ReloadLabel" type="Label" parent="Buttons/Buttons/ReloadButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 48
+text = "Auto reload: on"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClearButton" type="TextureButton" parent="Buttons/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_gh2k4")
+texture_pressed = ExtResource("3_pgbml")
+texture_hover = ExtResource("4_x2klw")
+
+[node name="Label" type="Label" parent="Buttons/Buttons/ClearButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 64
+text = "reset data"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 1728.0
+offset_top = 1850.0
+offset_right = 2112.0
+offset_bottom = 1978.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_gh2k4")
+texture_pressed = ExtResource("3_pgbml")
+texture_hover = ExtResource("4_x2klw")
+
+[node name="Label" type="Label" parent="BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_4kj6r")
+theme_override_font_sizes/font_size = 72
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessagePanel" parent="." instance=ExtResource("7_x2klw")]
+visible = false
+layout_mode = 1
+
+[connection signal="value_changed" from="Buttons/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Buttons/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Buttons/SFX/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Buttons/Buttons/ReloadButton" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="Buttons/Buttons/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

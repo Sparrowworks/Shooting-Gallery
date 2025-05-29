@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Level" load_steps=9 format=3 uid="uid://b8rjgkdc6xo47"]
+
+[ext_resource type="Script" uid="uid://b44padxxqm7eq" path="res://src/Game/Level/Level.gd" id="1_g0is1"]
+[ext_resource type="AudioStream" uid="uid://bk7so5j5xw7xn" path="res://assets/audio/Music/track2.mp3" id="1_wa78c"]
+[ext_resource type="PackedScene" uid="uid://s1ad6h88gkhh" path="res://src/Game/Level/TargetLevel/Scripts/TargetScript1.tscn" id="3_s6g7p"]
+[ext_resource type="PackedScene" uid="uid://dhe70xy7081va" path="res://src/Game/Level/TargetLevel/Scripts/TargetScript2.tscn" id="4_xnyul"]
+[ext_resource type="PackedScene" uid="uid://blk2gmqofftkn" path="res://src/Game/Level/TargetLevel/Scripts/TargetScript3.tscn" id="5_280bk"]
+[ext_resource type="PackedScene" uid="uid://c3rq31smqobxc" path="res://src/Game/Level/TargetLevel/Scripts/TargetScript4.tscn" id="6_a3j73"]
+[ext_resource type="PackedScene" uid="uid://dwdkgtfqnrjjc" path="res://src/Game/Level/TargetLevel/Scripts/TargetScript5.tscn" id="7_j8kuk"]
+[ext_resource type="PackedScene" uid="uid://cig8qdxsx8si4" path="res://src/Game/Level/TargetLevel/Scripts/TargetScript6.tscn" id="8_31leo"]
+
+[resource]
+script = ExtResource("1_g0is1")
+level_title = "Target Hunt"
+level_id = "target"
+game_theme = ExtResource("1_wa78c")
+background_type = 2
+rank_scores = Array[int]([0, 15000, 25000, 50000, 80000])
+ta_rank_scores = Array[int]([240, 180, 150, 120])
+ta_score = 60000
+scripts = Array[PackedScene]([ExtResource("3_s6g7p"), ExtResource("4_xnyul"), ExtResource("5_280bk"), ExtResource("6_a3j73"), ExtResource("7_j8kuk"), ExtResource("8_31leo")])
+metadata/_custom_type_script = "uid://b44padxxqm7eq"

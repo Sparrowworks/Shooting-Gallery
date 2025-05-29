@@ -1,0 +1,175 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6sbw3tkkonvc"]
+
+[ext_resource type="Script" uid="uid://bij0osrbeo2et" path="res://src/Menus/Help/help.gd" id="1_61sgk"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_vny63"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="2_61sgk"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="3_t41m3"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="4_0l5q0"]
+
+[sub_resource type="Animation" id="Animation_61sgk"]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0l5q0"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t41m3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bdxf"]
+_data = {
+&"FadeIn": SubResource("Animation_61sgk"),
+&"FadeOut": SubResource("Animation_0l5q0"),
+&"RESET": SubResource("Animation_t41m3")
+}
+
+[node name="Help" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61sgk")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1250.0
+offset_top = -837.0
+offset_right = 1250.0
+offset_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_vny63")
+theme_override_font_sizes/font_size = 256
+text = "help:"
+horizontal_alignment = 1
+
+[node name="MainText" type="Label" parent="Text"]
+custom_minimum_size = Vector2(2500, 1100)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("1_vny63")
+theme_override_font_sizes/font_size = 72
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -456.0
+offset_right = 192.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+
+[node name="NextButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_61sgk")
+texture_pressed = ExtResource("3_t41m3")
+texture_hover = ExtResource("4_0l5q0")
+
+[node name="Label" type="Label" parent="Buttons/NextButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_vny63")
+theme_override_font_sizes/font_size = 72
+text = "Next page"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_61sgk")
+texture_pressed = ExtResource("3_t41m3")
+texture_hover = ExtResource("4_0l5q0")
+
+[node name="Label" type="Label" parent="Buttons/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_vny63")
+theme_override_font_sizes/font_size = 72
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6bdxf")
+}
+
+[connection signal="pressed" from="Buttons/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Buttons/BackButton" to="." method="_on_back_button_pressed"]

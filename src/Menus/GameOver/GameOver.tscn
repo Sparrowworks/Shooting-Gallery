@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmk3jj7q33ej3"]
+
+[ext_resource type="Script" uid="uid://bijeyu30hcnd" path="res://src/Menus/GameOver/game_over.gd" id="1_iejw2"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_suyqx"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="2_wycdm"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="3_iejw2"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="4_qwro3"]
+[ext_resource type="AudioStream" uid="uid://b026y0jfkwhu5" path="res://assets/audio/Music/win.mp3" id="6_qwro3"]
+
+[node name="GameOver" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iejw2")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_top = 200.0
+offset_right = 3840.0
+offset_bottom = 457.0
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 256
+text = "Game over!"
+horizontal_alignment = 1
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -128.5
+offset_right = 231.0
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="LevelTitle" type="Label" parent="Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "You played: duck hunt"
+horizontal_alignment = 1
+
+[node name="ScoreText" type="Label" parent="Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "total score: 0"
+horizontal_alignment = 1
+
+[node name="TimeText" type="Label" parent="Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "time spent: 0"
+horizontal_alignment = 1
+
+[node name="AccuracyText" type="Label" parent="Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "Your accuracy: 0%"
+horizontal_alignment = 1
+
+[node name="CoinText" type="Label" parent="Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "You earned 0 coins"
+horizontal_alignment = 1
+
+[node name="RankText" type="Label" parent="Text"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "your rank: gold"
+horizontal_alignment = 1
+
+[node name="HIText" type="Label" parent="Text"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 96
+text = "you set a new highscore!"
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -378.0
+offset_right = 192.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_wycdm")
+texture_pressed = ExtResource("3_iejw2")
+texture_hover = ExtResource("4_qwro3")
+
+[node name="Label" type="Label" parent="BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_suyqx")
+theme_override_font_sizes/font_size = 72
+text = "MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qwro3")
+volume_db = -10.0
+bus = &"Music"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

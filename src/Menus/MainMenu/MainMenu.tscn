@@ -1,0 +1,170 @@
+[gd_scene load_steps=6 format=3 uid="uid://cekxamj4cox7p"]
+
+[ext_resource type="Script" uid="uid://656wvyaqdadk" path="res://src/Menus/MainMenu/main_menu.gd" id="1_2pb0l"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_x6jsa"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="2_yv1sc"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="3_2pb0l"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="4_0v87u"]
+
+[node name="MainMenu" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2pb0l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = -97.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 25
+
+[node name="VersionText" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 96
+text = "v1.0.0.0"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 606.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 256
+text = "SHOOTING GALLERY"
+horizontal_alignment = 1
+
+[node name="DevTitle" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 144
+text = "developed by sparrowworks"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -306.0
+offset_right = 192.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="PlayButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_yv1sc")
+texture_pressed = ExtResource("3_2pb0l")
+texture_hover = ExtResource("4_0v87u")
+
+[node name="Label" type="Label" parent="Buttons/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 72
+text = "play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_yv1sc")
+texture_pressed = ExtResource("3_2pb0l")
+texture_hover = ExtResource("4_0v87u")
+
+[node name="Label" type="Label" parent="Buttons/SettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 72
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_yv1sc")
+texture_pressed = ExtResource("3_2pb0l")
+texture_hover = ExtResource("4_0v87u")
+
+[node name="Label" type="Label" parent="Buttons/HelpButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 72
+text = "help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_yv1sc")
+texture_pressed = ExtResource("3_2pb0l")
+texture_hover = ExtResource("4_0v87u")
+
+[node name="Label" type="Label" parent="Buttons/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_x6jsa")
+theme_override_font_sizes/font_size = 72
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Buttons/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

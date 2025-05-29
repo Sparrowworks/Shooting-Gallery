@@ -1,0 +1,159 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbrr2u0p1yr3n"]
+
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_62fjb"]
+[ext_resource type="Script" uid="uid://53cnt7wv3nb2" path="res://src/Menus/Shop/shop.gd" id="1_x4m8j"]
+[ext_resource type="Texture2D" uid="uid://b4sou7ikgwhl3" path="res://assets/images/UI/panel.png" id="2_6n5bu"]
+[ext_resource type="Texture2D" uid="uid://c5sugdifoey44" path="res://assets/images/UI/money.png" id="3_vtqvk"]
+[ext_resource type="PackedScene" uid="uid://ltirijljs42q" path="res://src/Menus/Shop/ShopButton.tscn" id="4_6n5bu"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="5_eiqtq"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="6_x4m8j"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="7_swcvd"]
+[ext_resource type="PackedScene" uid="uid://bn7gd8yi556ll" path="res://src/Menus/MessagePanel/MessagePanel.tscn" id="9_swcvd"]
+[ext_resource type="AudioStream" uid="uid://8snsio11en33" path="res://assets/audio/SFX/buy.wav" id="10_fan3w"]
+[ext_resource type="AudioStream" uid="uid://d3j75nomik2lk" path="res://assets/audio/SFX/fail.wav" id="11_yswr5"]
+
+[node name="Shop" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4m8j")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 457.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_62fjb")
+theme_override_font_sizes/font_size = 256
+text = "upgrades shop:"
+horizontal_alignment = 1
+
+[node name="MoneyPanel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 375.0
+offset_right = 575.0
+offset_bottom = 500.0
+texture = ExtResource("2_6n5bu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MoneyPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MoneyPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_vtqvk")
+stretch_mode = 2
+
+[node name="MoneyText" type="Label" parent="MoneyPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_62fjb")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -538.0
+offset_right = 540.0
+offset_bottom = 738.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="FirerateButton" parent="Buttons" instance=ExtResource("4_6n5bu")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Firerate"
+upgrade_id = "firerate"
+
+[node name="AmmoButton" parent="Buttons" instance=ExtResource("4_6n5bu")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Ammo Count"
+price = 125
+upgrade_id = "ammo"
+
+[node name="ReloadButton" parent="Buttons" instance=ExtResource("4_6n5bu")]
+unique_name_in_owner = true
+layout_mode = 2
+title = "Reload Speed"
+price = 150
+upgrade_id = "reload"
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -228.0
+offset_right = 192.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_eiqtq")
+texture_pressed = ExtResource("6_x4m8j")
+texture_hover = ExtResource("7_swcvd")
+
+[node name="Label" type="Label" parent="BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_62fjb")
+theme_override_font_sizes/font_size = 72
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessagePanel" parent="." instance=ExtResource("9_swcvd")]
+visible = false
+layout_mode = 1
+
+[node name="Buy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fan3w")
+bus = &"SFX"
+
+[node name="Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_yswr5")
+bus = &"SFX"
+
+[connection signal="buy_pressed" from="Buttons/FirerateButton" to="." method="_on_shop_button_buy_pressed"]
+[connection signal="buy_pressed" from="Buttons/AmmoButton" to="." method="_on_shop_button_buy_pressed"]
+[connection signal="buy_pressed" from="Buttons/ReloadButton" to="." method="_on_shop_button_buy_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

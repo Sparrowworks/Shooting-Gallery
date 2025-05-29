@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2pm88gkw3oew"]
+
+[ext_resource type="Texture2D" uid="uid://kfecv8t1a74e" path="res://assets/images/Game/rifle.png" id="1_y7cge"]
+[ext_resource type="Texture2D" uid="uid://brdwauv7xw7k6" path="res://assets/images/Game/rifleEmpty.png" id="2_2iomw"]
+[ext_resource type="Script" uid="uid://b4vhlt6cycser" path="res://src/Game/Weapon/weapon.gd" id="3_2iomw"]
+[ext_resource type="AudioStream" uid="uid://t5f6ptqvbf60" path="res://assets/audio/SFX/fire.wav" id="4_d0gvv"]
+[ext_resource type="AudioStream" uid="uid://ck332e7yvd8an" path="res://assets/audio/SFX/dry_shoot.wav" id="5_ayhf7"]
+[ext_resource type="AudioStream" uid="uid://dmw5vsgp0kr1o" path="res://assets/audio/SFX/reload.wav" id="6_abnck"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n78cw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y7cge")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2iomw")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="Weapon" type="AnimatedSprite2D"]
+z_index = 100
+sprite_frames = SubResource("SpriteFrames_n78cw")
+centered = false
+script = ExtResource("3_2iomw")
+
+[node name="FirerateTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d0gvv")
+bus = &"SFX"
+
+[node name="DryShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ayhf7")
+bus = &"SFX"
+
+[node name="Reload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_abnck")
+bus = &"SFX"
+
+[connection signal="timeout" from="FirerateTimer" to="." method="_on_firerate_timer_timeout"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

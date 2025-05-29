@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://oo7wuw4lpe2j"]
+
+[ext_resource type="Script" uid="uid://b44padxxqm7eq" path="res://src/Game/Level/Level.gd" id="1_8246t"]
+[ext_resource type="AudioStream" uid="uid://bf0qt5puv5c1d" path="res://assets/audio/Music/track1.mp3" id="1_ygujw"]
+[ext_resource type="PackedScene" uid="uid://day630t5040uc" path="res://src/Game/Level/DuckLevel/Scripts/DuckScript1.tscn" id="2_2pgr3"]
+[ext_resource type="PackedScene" uid="uid://7d7nhcog8mke" path="res://src/Game/Level/DuckLevel/Scripts/DuckScript2.tscn" id="2_8246t"]
+[ext_resource type="PackedScene" uid="uid://caxeuooftyqft" path="res://src/Game/Level/DuckLevel/Scripts/DuckScript3.tscn" id="4_ygujw"]
+[ext_resource type="PackedScene" uid="uid://bllcdpu57noog" path="res://src/Game/Level/DuckLevel/Scripts/DuckScript4.tscn" id="5_3lbpp"]
+[ext_resource type="PackedScene" uid="uid://b4jhqkv6v4j70" path="res://src/Game/Level/DuckLevel/Scripts/DuckScript5.tscn" id="6_boped"]
+
+[resource]
+script = ExtResource("1_8246t")
+level_title = "Duck Hunt"
+level_id = "duck"
+game_theme = ExtResource("1_ygujw")
+background_type = 1
+rank_scores = Array[int]([0, 10000, 20000, 35000, 55000])
+ta_rank_scores = Array[int]([240, 180, 120, 100])
+ta_score = 50000
+scripts = Array[PackedScene]([ExtResource("2_2pgr3"), ExtResource("2_8246t"), ExtResource("4_ygujw"), ExtResource("5_3lbpp"), ExtResource("6_boped"), ExtResource("4_ygujw")])
+metadata/_custom_type_script = "uid://b44padxxqm7eq"

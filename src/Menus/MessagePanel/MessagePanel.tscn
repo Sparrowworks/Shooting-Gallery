@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn7gd8yi556ll"]
+
+[ext_resource type="Script" uid="uid://dqkwbp17hmv3d" path="res://src/Menus/MessagePanel/message_panel.gd" id="1_hwglr"]
+[ext_resource type="Texture2D" uid="uid://5xpax7q20ini" path="res://assets/images/UI/yellow_panel.png" id="1_qtl7f"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="2_uvaf8"]
+[ext_resource type="Texture2D" uid="uid://h7k24ll3q4cb" path="res://assets/images/UI/squarenormal.png" id="3_hwglr"]
+[ext_resource type="Texture2D" uid="uid://entmyxj6d3ml" path="res://assets/images/UI/squarepress.png" id="4_gu7fn"]
+[ext_resource type="Texture2D" uid="uid://b12rf42lcfuen" path="res://assets/images/UI/squarehover.png" id="5_0w1xi"]
+
+[node name="MessagePanel" type="Control"]
+z_index = 101
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hwglr")
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qtl7f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_uvaf8")
+theme_override_font_sizes/font_size = 144
+text = "NO CASH"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="Contents" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_uvaf8")
+theme_override_font_sizes/font_size = 84
+text = "YOU DON'T HAVE ENOUGH CASH TO BUY THIS UPGRADE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="OkButton" type="TextureButton" parent="Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hwglr")
+texture_pressed = ExtResource("4_gu7fn")
+texture_hover = ExtResource("5_0w1xi")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/OkButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_uvaf8")
+theme_override_font_sizes/font_size = 56
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoButton" type="TextureButton" parent="Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hwglr")
+texture_pressed = ExtResource("4_gu7fn")
+texture_hover = ExtResource("5_0w1xi")
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/NoButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_uvaf8")
+theme_override_font_sizes/font_size = 56
+text = "NO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/OkButton" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

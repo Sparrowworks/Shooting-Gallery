@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://day630t5040uc"]
+
+[ext_resource type="PackedScene" uid="uid://csrorkdlsowhi" path="res://src/Game/GameScript/GameScript.tscn" id="1_v66k5"]
+[ext_resource type="Script" uid="uid://chjc55hhmukg1" path="res://src/Game/Level/DuckLevel/Scripts/duck_script_1.gd" id="2_5yjhj"]
+[ext_resource type="PackedScene" uid="uid://cnjn2666uqjew" path="res://src/Game/Enemy/Duck/Duck.tscn" id="3_qw88b"]
+
+[node name="DuckScript1" instance=ExtResource("1_v66k5")]
+script = ExtResource("2_5yjhj")
+enemy_scene = ExtResource("3_qw88b")
+
+[node name="Duration" parent="." index="0"]
+wait_time = 15.0
+
+[node name="Left" type="Timer" parent="." index="1"]
+wait_time = 1.35
+
+[node name="Right" type="Timer" parent="." index="2"]
+wait_time = 1.75
+
+[node name="DuckZone2" type="Marker2D" parent="." index="3"]
+z_index = 4
+y_sort_enabled = true
+position = Vector2(100, 1250)
+
+[node name="DuckZone1" type="Marker2D" parent="." index="4"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(3740, 1350)
+
+[connection signal="timeout" from="Left" to="." method="_on_left_timeout"]
+[connection signal="timeout" from="Right" to="." method="_on_right_timeout"]

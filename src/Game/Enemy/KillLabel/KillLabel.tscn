@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://tuyjwi2qr16b"]
+
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_4of38"]
+[ext_resource type="Script" uid="uid://dsbs5tshlre0b" path="res://src/Game/Enemy/KillLabel/kill_label.gd" id="2_r8bse"]
+
+[sub_resource type="Animation" id="Animation_r8bse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4of38"]
+resource_name = "Show"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2.2974, 0.217638),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3840)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ahr8"]
+_data = {
+&"RESET": SubResource("Animation_r8bse"),
+&"Show": SubResource("Animation_4of38")
+}
+
+[node name="KillLabel" type="Node2D"]
+top_level = true
+y_sort_enabled = true
+script = ExtResource("2_r8bse")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+offset_top = -3840.0
+offset_right = 120.0
+offset_bottom = -3743.0
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_4of38")
+theme_override_font_sizes/font_size = 96
+text = "+x"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_6ahr8")
+}
+
+[connection signal="animation_finished" from="Label/AnimationPlayer" to="Label" method="_on_animation_player_animation_finished"]

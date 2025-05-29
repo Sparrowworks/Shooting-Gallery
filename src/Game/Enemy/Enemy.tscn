@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dymm5ga70wkbk"]
+
+[ext_resource type="Script" uid="uid://tr5nq42037p1" path="res://src/Game/Enemy/enemy.gd" id="1_3bf2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bf2y"]
+size = Vector2(144, 144)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3bf2y"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 3
+particles_anim_loop = false
+
+[node name="Enemy" type="Node2D" groups=["enemies"]]
+script = ExtResource("1_3bf2y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3bf2y")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_3bf2y")
+emitting = false
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 2
+emission_sphere_radius = 32.0
+direction = Vector2(0, 1)
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+anim_offset_max = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="GoneTimer" type="Timer" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="GoneTimer" to="." method="_on_gone_timer_timeout"]

@@ -1,0 +1,193 @@
+[gd_scene load_steps=15 format=3 uid="uid://7137qtpqcnee"]
+
+[ext_resource type="Script" uid="uid://0ayweh73fhl7" path="res://src/Main/main.gd" id="1_c0fy0"]
+[ext_resource type="Texture2D" uid="uid://bh6h3cgb1xq5e" path="res://assets/images/UI/backgroundEmpty.png" id="2_1pat6"]
+[ext_resource type="Texture2D" uid="uid://s1a65xi2hk1f" path="res://assets/images/UI/curtainSide.png" id="2_f6j18"]
+[ext_resource type="Texture2D" uid="uid://c7emj5uv0utm7" path="res://assets/images/UI/water2.png" id="3_52sh2"]
+[ext_resource type="Texture2D" uid="uid://cs3dhcupidala" path="res://assets/images/UI/water1.png" id="3_nd7eq"]
+[ext_resource type="Texture2D" uid="uid://c2s6f0nw4v67o" path="res://assets/images/UI/cloud1.png" id="3_ylqps"]
+[ext_resource type="Texture2D" uid="uid://c1pxpnsuu7g2m" path="res://assets/images/UI/bg_wood.png" id="4_7cpwk"]
+[ext_resource type="Texture2D" uid="uid://dx8dpwkaah3ts" path="res://assets/images/UI/cloud2.png" id="4_x35vm"]
+[ext_resource type="Texture2D" uid="uid://cngqsnesy2e6c" path="res://assets/images/UI/grass2.png" id="7_r70vq"]
+[ext_resource type="Texture2D" uid="uid://dwdqxvc8abxx6" path="res://assets/images/UI/curtainTop.png" id="7_yqsku"]
+[ext_resource type="Texture2D" uid="uid://chwmlb8fl138y" path="res://assets/images/UI/curtainStraight.png" id="8_51663"]
+[ext_resource type="Texture2D" uid="uid://cj578y7tdugts" path="res://assets/images/UI/grass1.png" id="8_qt6tj"]
+[ext_resource type="AudioStream" uid="uid://hnn68ia6dtyu" path="res://assets/audio/Music/menu.mp3" id="13_x35vm"]
+[ext_resource type="AudioStream" uid="uid://djb0eur2vo5rv" path="res://assets/audio/SFX/click.wav" id="14_r70vq"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c0fy0")
+
+[node name="Background" type="Parallax2D" parent="."]
+y_sort_enabled = true
+repeat_size = Vector2(1024, 0)
+autoscroll = Vector2(-15, 0)
+repeat_times = 10
+limit_begin = Vector2(0, 0)
+limit_end = Vector2(1e+07, 0)
+
+[node name="BackgroundEmpty" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_1pat6")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, -600, 1024, 2160)
+
+[node name="Clouds" type="Parallax2D" parent="."]
+y_sort_enabled = true
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-15, 0)
+limit_begin = Vector2(0, 0)
+limit_end = Vector2(1e+07, 0)
+
+[node name="Cloud" type="Sprite2D" parent="Clouds"]
+position = Vector2(773.5, 258)
+texture = ExtResource("3_ylqps")
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds"]
+position = Vector2(2211.5, 338)
+texture = ExtResource("3_ylqps")
+
+[node name="Cloud3" type="Sprite2D" parent="Clouds"]
+position = Vector2(2644.5, 570)
+texture = ExtResource("3_ylqps")
+
+[node name="Cloud4" type="Sprite2D" parent="Clouds"]
+position = Vector2(1431.5, 487)
+texture = ExtResource("4_x35vm")
+
+[node name="Cloud5" type="Sprite2D" parent="Clouds"]
+position = Vector2(210.5, 549)
+texture = ExtResource("4_x35vm")
+
+[node name="Cloud6" type="Sprite2D" parent="Clouds"]
+position = Vector2(2947.5, 242)
+texture = ExtResource("4_x35vm")
+
+[node name="Water2" type="Parallax2D" parent="."]
+z_index = 5
+y_sort_enabled = true
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(75, 0)
+
+[node name="Water2" type="Sprite2D" parent="Water2"]
+position = Vector2(0, 1325)
+texture = ExtResource("3_52sh2")
+centered = false
+
+[node name="Water" type="Parallax2D" parent="."]
+z_index = 6
+y_sort_enabled = true
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-100, 0)
+
+[node name="Water1" type="Sprite2D" parent="Water"]
+position = Vector2(0, 1430)
+texture = ExtResource("3_nd7eq")
+centered = false
+
+[node name="Grass2" type="Parallax2D" parent="."]
+visible = false
+z_index = 5
+y_sort_enabled = true
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(75, 0)
+
+[node name="Grass2" type="Sprite2D" parent="Grass2"]
+position = Vector2(0, 1325)
+texture = ExtResource("7_r70vq")
+centered = false
+
+[node name="Grass" type="Parallax2D" parent="."]
+visible = false
+z_index = 6
+y_sort_enabled = true
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-100, 0)
+
+[node name="Grass" type="Sprite2D" parent="Grass"]
+position = Vector2(0, 1450)
+texture = ExtResource("8_qt6tj")
+centered = false
+
+[node name="Floor" type="TextureRect" parent="."]
+z_index = 10
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -512.0
+offset_right = 1920.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_7cpwk")
+flip_h = true
+
+[node name="CurtainLeft" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 0
+offset_right = 665.0
+offset_bottom = 2160.0
+texture = ExtResource("2_f6j18")
+
+[node name="CurtainRight" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -665.0
+offset_top = -1080.0
+offset_bottom = 1080.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_f6j18")
+flip_h = true
+
+[node name="CurtainTop" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -2098.0
+offset_right = 1920.0
+offset_bottom = -2019.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_yqsku")
+stretch_mode = 1
+
+[node name="CurtainStraight" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 64.0
+texture = ExtResource("8_51663")
+stretch_mode = 1
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_x35vm")
+bus = &"Music"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_r70vq")
+bus = &"SFX"

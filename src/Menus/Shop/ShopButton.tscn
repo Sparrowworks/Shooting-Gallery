@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://ltirijljs42q"]
+
+[ext_resource type="Texture2D" uid="uid://bcn6thsim0qtd" path="res://assets/images/UI/store_panel.png" id="1_u8vit"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="2_7hwub"]
+[ext_resource type="Script" uid="uid://xsxjddhpu08q" path="res://src/Menus/Shop/shop_button.gd" id="2_j5ixb"]
+[ext_resource type="Texture2D" uid="uid://c5sugdifoey44" path="res://assets/images/UI/money.png" id="3_7hwub"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="4_1bgva"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="5_j5ixb"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="6_l6hbf"]
+
+[node name="ShopButton" type="TextureRect"]
+texture = ExtResource("1_u8vit")
+script = ExtResource("2_j5ixb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UpgradeTitle" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_7hwub")
+theme_override_font_sizes/font_size = 48
+text = "Ammo count upgrade"
+horizontal_alignment = 1
+
+[node name="Upgrade" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_7hwub")
+theme_override_font_sizes/font_size = 48
+text = "current level: 0/3"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Price" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_7hwub")
+theme_override_font_sizes/font_size = 48
+text = "Price: 100"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_7hwub")
+stretch_mode = 2
+
+[node name="BuyButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_1bgva")
+texture_pressed = ExtResource("5_j5ixb")
+texture_hover = ExtResource("6_l6hbf")
+
+[node name="Label" type="Label" parent="VBoxContainer/BuyButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_7hwub")
+theme_override_font_sizes/font_size = 56
+text = "PURCHASE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyParticles" type="CPUParticles2D" parent="."]
+position = Vector2(541, 278)
+emitting = false
+amount = 16
+texture = ExtResource("3_7hwub")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(540, 196)
+spread = 180.0
+initial_velocity_min = 292.93
+initial_velocity_max = 646.46
+
+[connection signal="pressed" from="VBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]

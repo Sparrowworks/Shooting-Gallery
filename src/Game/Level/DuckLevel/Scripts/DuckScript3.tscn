@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://caxeuooftyqft"]
+
+[ext_resource type="PackedScene" uid="uid://csrorkdlsowhi" path="res://src/Game/GameScript/GameScript.tscn" id="1_km085"]
+[ext_resource type="Script" uid="uid://vp3qghtaj5kw" path="res://src/Game/Level/DuckLevel/Scripts/duck_script_3.gd" id="2_1rng0"]
+[ext_resource type="PackedScene" uid="uid://cnjn2666uqjew" path="res://src/Game/Enemy/Duck/Duck.tscn" id="3_p2218"]
+
+[node name="DuckScript3" instance=ExtResource("1_km085")]
+script = ExtResource("2_1rng0")
+enemy_scene = ExtResource("3_p2218")
+
+[node name="Duration" parent="." index="0"]
+wait_time = 3.0
+
+[node name="DuckZone2" type="Marker2D" parent="." index="1"]
+z_index = 4
+y_sort_enabled = true
+position = Vector2(100, 1250)
+
+[node name="DuckZone1" type="Marker2D" parent="." index="2"]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(3740, 1350)

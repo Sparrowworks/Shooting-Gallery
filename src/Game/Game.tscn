@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://b17226ubuln08"]
+
+[ext_resource type="Script" uid="uid://bik7df62yd43a" path="res://src/Game/game.gd" id="1_ggd3w"]
+[ext_resource type="PackedScene" uid="uid://cdx3gytrjtimt" path="res://src/Game/UI/UI.tscn" id="1_tvsue"]
+[ext_resource type="PackedScene" uid="uid://if35btrp6l0d" path="res://src/Game/UI/PauseUI/PauseUI.tscn" id="3_0fb64"]
+[ext_resource type="PackedScene" uid="uid://d2pm88gkw3oew" path="res://src/Game/Weapon/Weapon.tscn" id="3_5fh4b"]
+[ext_resource type="PackedScene" uid="uid://cwf7mlnaqj5k" path="res://src/Game/Enemy/Target/Target.tscn" id="6_2s6fp"]
+[ext_resource type="PackedScene" uid="uid://cnjn2666uqjew" path="res://src/Game/Enemy/Duck/Duck.tscn" id="7_yeien"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ggd3w")
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_tvsue")]
+
+[node name="PauseUi" parent="CanvasLayer" instance=ExtResource("3_0fb64")]
+process_mode = 2
+
+[node name="Weapon" parent="." instance=ExtResource("3_5fh4b")]
+position = Vector2(2570, 1150)
+
+[node name="GameTheme" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="TimeTimer" type="Timer" parent="."]
+
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TestTarget" parent="." instance=ExtResource("6_2s6fp")]
+position = Vector2(-142, -22)
+direction = Vector2(0, 0)
+is_static = true
+static_duration = 5.0
+
+[node name="TestDuck" parent="." instance=ExtResource("7_yeien")]
+position = Vector2(-148, 126)
+direction = Vector2(0, 0)
+is_static = true
+static_duration = 5.0
+
+[connection signal="game_paused" from="." to="CanvasLayer/PauseUi" method="_on_game_game_paused"]
+[connection signal="start_finished" from="CanvasLayer/UI" to="." method="_on_ui_start_finished"]
+[connection signal="ta_gameover" from="CanvasLayer/UI" to="." method="_on_ui_ta_gameover"]
+[connection signal="game_unpaused" from="CanvasLayer/PauseUi" to="." method="_on_pause_ui_game_unpaused"]
+[connection signal="weapon_fired" from="Weapon" to="." method="_on_weapon_weapon_fired"]
+[connection signal="weapon_reloaded" from="Weapon" to="." method="_on_weapon_weapon_reloaded"]
+[connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]

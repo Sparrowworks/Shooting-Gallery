@@ -1,0 +1,208 @@
+[gd_scene load_steps=11 format=3 uid="uid://caq8tw3utr1t4"]
+
+[ext_resource type="Texture2D" uid="uid://5xpax7q20ini" path="res://assets/images/UI/yellow_panel.png" id="1_7ch2s"]
+[ext_resource type="Script" uid="uid://bsn7x7ftt4ce2" path="res://src/Menus/LevelSelect/LevelButton/level_button.gd" id="1_7dsyn"]
+[ext_resource type="FontFile" uid="uid://bujtx85y4f08p" path="res://assets/fonts/Frogie-Regular.ttf" id="1_uj5a1"]
+[ext_resource type="Texture2D" uid="uid://cshidewutya5q" path="res://assets/images/UI/greySlider.png" id="3_uj5a1"]
+[ext_resource type="Texture2D" uid="uid://entmyxj6d3ml" path="res://assets/images/UI/squarepress.png" id="4_8i3bn"]
+[ext_resource type="Texture2D" uid="uid://h7k24ll3q4cb" path="res://assets/images/UI/squarenormal.png" id="4_g0scp"]
+[ext_resource type="Texture2D" uid="uid://b12rf42lcfuen" path="res://assets/images/UI/squarehover.png" id="5_sub82"]
+[ext_resource type="Texture2D" uid="uid://x38w76g473cc" path="res://assets/images/UI/buttonnormal.png" id="6_lvhun"]
+[ext_resource type="Texture2D" uid="uid://qtfy0h5eqedw" path="res://assets/images/UI/buttonpress.png" id="7_mfb83"]
+[ext_resource type="Texture2D" uid="uid://5ra5701tl1hk" path="res://assets/images/UI/buttonhover.png" id="8_tg0a3"]
+
+[node name="LevelButton" type="VBoxContainer"]
+offset_left = 1206.0
+offset_right = 1206.0
+offset_bottom = 500.0
+theme_override_constants/separation = 35
+script = ExtResource("1_7dsyn")
+
+[node name="LevelTitle" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 72
+text = "Level Title"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 150
+
+[node name="LeftButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_g0scp")
+texture_pressed = ExtResource("4_8i3bn")
+texture_hover = ExtResource("5_sub82")
+
+[node name="CenterContainer" type="CenterContainer" parent="Buttons/LeftButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Buttons/LeftButton/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_uj5a1")
+
+[node name="MainButton" type="TextureRect" parent="Buttons"]
+layout_mode = 2
+texture = ExtResource("1_7ch2s")
+
+[node name="CenterContainer" type="CenterContainer" parent="Buttons/MainButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelIcon" type="TextureRect" parent="Buttons/MainButton/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+stretch_mode = 2
+
+[node name="RightButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_g0scp")
+texture_pressed = ExtResource("4_8i3bn")
+texture_hover = ExtResource("5_sub82")
+
+[node name="CenterContainer" type="CenterContainer" parent="Buttons/RightButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Buttons/RightButton/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_uj5a1")
+flip_h = true
+
+[node name="Highscores" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="HighscoreText" type="Label" parent="Highscores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 72
+text = "highscore: 0"
+horizontal_alignment = 1
+
+[node name="RankText" type="Label" parent="Highscores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 72
+text = "rank: platinum"
+horizontal_alignment = 1
+
+[node name="TaHighscores" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="TaHighscoreText" type="Label" parent="TaHighscores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 72
+text = "ta fastest time: 0"
+horizontal_alignment = 1
+
+[node name="TaRankText" type="Label" parent="TaHighscores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 72
+text = "ta rank: platinum"
+horizontal_alignment = 1
+
+[node name="AccuracyText" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 0.392157, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 72
+text = "Highest accuracy: 0%"
+horizontal_alignment = 1
+
+[node name="NormalButton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_lvhun")
+texture_pressed = ExtResource("7_mfb83")
+texture_hover = ExtResource("8_tg0a3")
+
+[node name="Label" type="Label" parent="NormalButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 56
+text = "normal game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TaButton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_lvhun")
+texture_pressed = ExtResource("7_mfb83")
+texture_hover = ExtResource("8_tg0a3")
+
+[node name="Label" type="Label" parent="TaButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_uj5a1")
+theme_override_font_sizes/font_size = 56
+text = "TIME ATTACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Buttons/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Buttons/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="NormalButton" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="TaButton" to="." method="_on_ta_button_pressed"]
