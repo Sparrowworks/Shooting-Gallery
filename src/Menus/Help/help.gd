@@ -13,14 +13,14 @@ var headings: Array[String] = [
 	"Credits:",
 ]
 var content: Array[String] = [
-	"Your goal is to shoot down as many targets as you can. Move the mouse cursor over the enemy and then shoot
+	"""Your goal is to shoot down as many targets as you can. Move the mouse cursor over the enemy and then shoot
 	with left mouse button. After each game, you earn coins based on your performance. Spend them in the store
 	to upgrade your weapon and make it more powerful for the next rounds!
 
 	Time Attack mode is a special mode where you have to lower the score to 0 as quickly as you can. Faster playthrough
-	will earn you more coins than a longer one. This mode loops the waves of enemies until you reach 0 score.",
+	will earn you more coins than a longer one. This mode loops the waves of enemies until you reach 0 score.""",
 
-	"Left Mouse Button - Shoot
+	"""Left Mouse Button - Shoot
 
 	Right Mouse Button / Press R - Reload
 
@@ -28,9 +28,9 @@ var content: Array[String] = [
 
 	P - Pause/Unpause Game
 
-	Esc - Quit to menu",
+	Esc - Quit to menu""",
 
-	"Developed by sparrowworks:
+	"""Developed by sparrowworks:
 	programmer, game designer - sp4r0w
 	game designer, tester - varga
 
@@ -39,7 +39,7 @@ var content: Array[String] = [
 
 	music:
 	BATTLE OF THE VOID BY MARCELO FERNANDEZ
-	ABSTRACTION MUSIC PACK BY BEN BURNES"
+	ABSTRACTION MUSIC PACK BY BEN BURNES"""
 ]
 
 func _ready() -> void:
