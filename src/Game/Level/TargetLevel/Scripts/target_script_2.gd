@@ -6,6 +6,7 @@ extends GameScript
 var current_position: int = -1
 var target_spawn_points: Array[Marker2D]
 
+
 func activate() -> void:
 	super()
 
@@ -14,10 +15,12 @@ func activate() -> void:
 
 	spawn_timer.start()
 
+
 func deactivate_timers() -> void:
 	super()
 
 	spawn_timer.stop()
+
 
 func select_type(target: Target) -> void:
 	if total_enemies % 10 == 0:
@@ -35,6 +38,7 @@ func select_type(target: Target) -> void:
 	else:
 		target.type = 1
 		target.static_duration = 3
+
 
 func _on_spawn_timer_timeout() -> void:
 	current_position += 1

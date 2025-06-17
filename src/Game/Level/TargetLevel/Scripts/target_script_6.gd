@@ -3,15 +3,18 @@ extends GameScript
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var positions: Node2D = $Positions
 
+
 func activate() -> void:
 	super()
 
 	spawn_timer.start()
 
+
 func deactivate_timers() -> void:
 	super()
 
 	spawn_timer.stop()
+
 
 func _on_spawn_timer_timeout() -> void:
 	for position: Marker2D in positions.get_children():

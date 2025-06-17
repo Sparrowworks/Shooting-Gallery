@@ -13,11 +13,13 @@ func activate() -> void:
 	left.start()
 	right.start()
 
+
 func deactivate_timers() -> void:
 	super()
 
 	left.stop()
 	right.stop()
+
 
 func select_type(duck: Duck) -> void:
 	if total_enemies % 10 == 0:
@@ -27,6 +29,7 @@ func select_type(duck: Duck) -> void:
 		duck.type = 1
 		duck.speed = 500
 
+
 func _on_left_timeout() -> void:
 	var duck: Duck = spawn_enemy()
 	select_type(duck)
@@ -35,6 +38,7 @@ func _on_left_timeout() -> void:
 	duck.global_position = duck_zone_2.global_position
 	duck.z_index = duck_zone_2.z_index
 	game.add_child(duck)
+
 
 func _on_right_timeout() -> void:
 	var duck: Duck = spawn_enemy()

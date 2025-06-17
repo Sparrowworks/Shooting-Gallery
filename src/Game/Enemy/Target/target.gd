@@ -10,8 +10,10 @@ class_name Target extends Enemy
 
 @onready var target: AnimatedSprite2D = $AnimatedSprite2D
 
+
 func on_ready() -> void:
 	set_animation()
+
 
 func set_animation() -> void:
 	match type:
@@ -36,6 +38,7 @@ func set_animation() -> void:
 			target.animation = "color"
 			cpu_particles_2d.texture = target.sprite_frames.get_frame_texture("color", 0)
 
+
 func spawn_static() -> void:
 	is_static = true
 	spawn_type = 2
@@ -54,6 +57,7 @@ func spawn_static() -> void:
 
 	super()
 
+
 func spawn_fade_static() -> void:
 	is_static = true
 	spawn_type = 1
@@ -67,9 +71,11 @@ func spawn_fade_static() -> void:
 	gone_timer.wait_time = static_duration
 	gone_timer.start()
 
+
 func gone() -> void:
 	direction = Vector2.ZERO
 	animation_player.play("Hide")
+
 
 func on_enemy_gone() -> void:
 	super()
@@ -82,6 +88,7 @@ func on_enemy_gone() -> void:
 
 	await animation_player.animation_finished
 	queue_free()
+
 
 func kill(quiet_kill: bool = false) -> void:
 	super()

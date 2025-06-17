@@ -1,7 +1,7 @@
 class_name GameUI extends Control
 
-signal start_finished()
-signal ta_gameover()
+signal start_finished
+signal ta_gameover
 
 @onready var ready_text: TextureRect = $ReadyText
 @onready var go_text: TextureRect = $Go
@@ -46,19 +46,21 @@ var is_ta: bool = false
 var rank_scores: Array[int]
 var rank_value: int = 0
 
+
 func _ready() -> void:
 	set_rank(0)
+
 
 func _process(delta: float) -> void:
 	var update_value: int = 0
 
 	# Clamp the score update value in order to prevent any slowdowns if the score is too big
 	if score_to_update > 0 and score_to_update <= 500:
-		update_value = clamp(score_to_update,1,SMALL_MAX_CLAMP_VALUE)
+		update_value = clamp(score_to_update, 1, SMALL_MAX_CLAMP_VALUE)
 	elif score_to_update > 500 and score_to_update <= 2500:
-		update_value = clamp(score_to_update,1,MEDIUM_MAX_CLAMP_VALUE)
+		update_value = clamp(score_to_update, 1, MEDIUM_MAX_CLAMP_VALUE)
 	elif score_to_update > 2500:
-		update_value = clamp(score_to_update,1,BIG_MAX_CLAMP_VALUE)
+		update_value = clamp(score_to_update, 1, BIG_MAX_CLAMP_VALUE)
 
 	if update_value > 0:
 		score_to_update -= update_value
@@ -74,6 +76,7 @@ func _process(delta: float) -> void:
 
 		set_score(score_text_value)
 
+
 func set_restart_bar(value: int) -> void:
 	if value > 0:
 		restart_bar.modulate = Color.WHITE
@@ -82,9 +85,11 @@ func set_restart_bar(value: int) -> void:
 
 	restart_progress_bar.value = value
 
+
 func _on_combo_timer_timeout() -> void:
 	combo = 0
 	update_combo()
+
 
 func play_start() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -93,6 +98,7 @@ func play_start() -> void:
 	await animation_player.animation_finished
 	start_finished.emit()
 
+
 func update_combo() -> void:
 	combo += 1
 	combo_timer.start()
@@ -100,7 +106,7 @@ func update_combo() -> void:
 	if combo > 2:
 		combo_text.show()
 		combo_text.text = "Combo x" + str(combo)
-		combo_font_size = clamp(combo_font_size + 2, 72, 192) # Make the combo text bigger with a bigger combo
+		combo_font_size = clamp(combo_font_size + 2, 72, 192)  # Make the combo text bigger with a bigger combo
 		combo_animation.play("Rotate")
 	else:
 		if combo_text.visible:
@@ -111,8 +117,9 @@ func update_combo() -> void:
 		combo_font_size = 72
 		combo_timer.stop()
 
-	combo_text.add_theme_font_size_override("font_size",combo_font_size)
-	combo_text.add_theme_constant_override("outline_size",int(combo_font_size / 4))
+	combo_text.add_theme_font_size_override("font_size", combo_font_size)
+	combo_text.add_theme_constant_override("outline_size", int(combo_font_size / 4))
+
 
 func check_for_bonus(killed: int) -> void:
 	# Special score bonuses for hitting special kill amounts
@@ -131,8 +138,10 @@ func check_for_bonus(killed: int) -> void:
 	await bonus_animation.animation_finished
 	bonus_animation.play("FadeOut")
 
+
 func set_title(title: String) -> void:
 	level_title.text = title
+
 
 func set_time(time: int) -> void:
 	if is_ta:
@@ -149,21 +158,24 @@ func set_time(time: int) -> void:
 	if is_ta:
 		check_ta_rank(time_value)
 
+
 func set_score(score: int) -> void:
 	score_text.text = "Score: " + str(score)
+
 
 func set_bullets(bullets_left: int, max_bullets: int) -> void:
 	# Show the amount of bullets that the weapon can hold and update their sprites (indicating the amount left in the "magazine")
 	for x in range(0, max_bullets):
 		var bullet: TextureRect = bullets.get_child(x)
 		bullet.show()
-		if x > bullets_left-1:
+		if x > bullets_left - 1:
 			bullet.texture = EMPTY_BULLET
 		else:
 			bullet.texture = BULLET
 
+
 func check_rank(score: int) -> void:
-	for x in range(rank_scores.size()-1, -1, -1):
+	for x in range(rank_scores.size() - 1, -1, -1):
 		var score_to_check: int = rank_scores[x]
 		if score >= score_to_check:
 			set_rank(x)
@@ -171,14 +183,16 @@ func check_rank(score: int) -> void:
 
 	set_rank(0)
 
+
 func check_ta_rank(time: int) -> void:
-	for x in range(rank_scores.size()-1, -1, -1):
+	for x in range(rank_scores.size() - 1, -1, -1):
 		var time_to_check: int = rank_scores[x]
 		if time <= time_to_check:
 			set_ta_rank(x)
 			return
 
 	set_rank(0)
+
 
 func set_rank(rank: int) -> void:
 	rank_value = rank
@@ -199,6 +213,7 @@ func set_rank(rank: int) -> void:
 		4:
 			rank_text.text = "Rank: Platinum"
 			rank_text.add_theme_color_override("font_outline_color", Color.SKY_BLUE)
+
 
 func set_ta_rank(rank: int) -> void:
 	rank_value = rank

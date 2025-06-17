@@ -33,6 +33,7 @@ signal buy_pressed(button: ShopButton)
 
 @export var upgrade_id: String = ""
 
+
 func _ready() -> void:
 	upgrade_title.text = title + " Upgrade"
 	level_text.text = "Current Level: " + str(level) + "/3"
@@ -42,6 +43,7 @@ func _ready() -> void:
 		price_text.text = "Max upgrade level reached!"
 		icon.hide()
 		$VBoxContainer/BuyButton.hide()
+
 
 func _on_buy_button_pressed() -> void:
 	$VBoxContainer/BuyButton.release_focus()

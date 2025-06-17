@@ -19,7 +19,6 @@ var content: Array[String] = [
 
 	Time Attack mode is a special mode where you have to lower the score to 0 as quickly as you can. Faster playthrough
 	will earn you more coins than a longer one. This mode loops the waves of enemies until you reach 0 score.""",
-
 	"""Left Mouse Button - Shoot
 
 	Right Mouse Button / Press R - Reload
@@ -29,7 +28,6 @@ var content: Array[String] = [
 	P - Pause/Unpause Game
 
 	Esc - Quit to menu""",
-
 	"""Developed by sparrowworks:
 	programmer, game designer - sp4r0w
 	game designer, tester - varga
@@ -42,9 +40,11 @@ var content: Array[String] = [
 	ABSTRACTION MUSIC PACK BY BEN BURNES"""
 ]
 
+
 func _ready() -> void:
 	title.text = headings[page]
 	main_text.text = content[page]
+
 
 func _on_next_button_pressed() -> void:
 	if is_switching:
@@ -63,6 +63,7 @@ func _on_next_button_pressed() -> void:
 	await animation_player.animation_finished
 
 	is_switching = false
+
 
 func _on_back_button_pressed() -> void:
 	Globals.go_to_with_fade("res://src/Menus/MainMenu/MainMenu.tscn")

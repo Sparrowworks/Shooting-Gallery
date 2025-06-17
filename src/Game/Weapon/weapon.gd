@@ -1,8 +1,8 @@
 class_name Weapon extends AnimatedSprite2D
 
-signal preloaded()
+signal preloaded
 signal weapon_fired(bullets_left: int)
-signal weapon_reloaded()
+signal weapon_reloaded
 
 @export var weight: float = 0.5
 
@@ -23,11 +23,13 @@ const SANDCLOCK = preload("res://assets/images/Game/sandclock.png")
 
 var can_shoot: bool = false
 
+
 func _ready() -> void:
 	set_upgrades()
 
 	hide()
 	set_process(false)
+
 
 func game_preload() -> void:
 	# Prevents lag by preloading sounds
@@ -39,6 +41,7 @@ func game_preload() -> void:
 		sound.volume_db = linear_to_db(1.0)
 
 	preloaded.emit()
+
 
 func set_upgrades() -> void:
 	# Buff the weapon stats according to bought upgrades
@@ -66,6 +69,7 @@ func set_upgrades() -> void:
 	max_bullets = 3 + (1 * int(Globals.weapon_upgrades["ammo"]))
 	bullets = max_bullets
 
+
 func activate() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Input.set_custom_mouse_cursor(CROSSHAIR, Input.CURSOR_ARROW, Vector2(32, 32))
@@ -73,6 +77,7 @@ func activate() -> void:
 	show()
 	set_process(true)
 	can_shoot = true
+
 
 func deactivate() -> void:
 	Input.set_custom_mouse_cursor(null)
@@ -83,11 +88,20 @@ func deactivate() -> void:
 	reload_timer.stop()
 	firerate_timer.stop()
 
+
 func _process(delta: float) -> void:
 	# Reduce the area where the weapon can follow the mouse
 	global_position = Vector2(
-		lerp(global_position.x, clamp(get_global_mouse_position().x, width * 0.05, width * 0.85), weight),
-		lerp(global_position.y, clamp(get_global_mouse_position().y, height * 0.35, height * 0.9), weight)
+		lerp(
+			global_position.x,
+			clamp(get_global_mouse_position().x, width * 0.05, width * 0.85),
+			weight
+		),
+		lerp(
+			global_position.y,
+			clamp(get_global_mouse_position().y, height * 0.35, height * 0.9),
+			weight
+		)
 	)
 
 	if not can_shoot:
@@ -110,6 +124,7 @@ func _process(delta: float) -> void:
 		if firerate_timer.time_left <= 0 and reload_timer.time_left <= 0:
 			shoot()
 
+
 func shoot() -> void:
 	Input.set_custom_mouse_cursor(SANDCLOCK, Input.CURSOR_ARROW, Vector2(32, 32))
 
@@ -123,6 +138,7 @@ func shoot() -> void:
 		animation = "empty"
 		firerate_timer.start()
 
+
 func start_reload() -> void:
 	if reload_timer.time_left <= 0 and bullets < max_bullets and firerate_timer.time_left <= 0:
 		Input.set_custom_mouse_cursor(SANDCLOCK, Input.CURSOR_ARROW, Vector2(32, 32))
@@ -131,12 +147,14 @@ func start_reload() -> void:
 		reload_timer.start()
 		reload_sound.play()
 
+
 func _on_reload_timer_timeout() -> void:
 	Input.set_custom_mouse_cursor(CROSSHAIR, Input.CURSOR_ARROW, Vector2(32, 32))
 	animation = "default"
 
 	bullets = max_bullets
 	weapon_reloaded.emit()
+
 
 func _on_firerate_timer_timeout() -> void:
 	animation = "default"

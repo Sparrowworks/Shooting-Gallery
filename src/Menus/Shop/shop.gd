@@ -7,17 +7,10 @@ extends Control
 
 @onready var message_panel: MessagePanel = $MessagePanel
 
-var base_prices: Dictionary[String, int] = {
-	"firerate": 100,
-	"ammo": 125,
-	"reload": 150
-}
+var base_prices: Dictionary[String, int] = {"firerate": 100, "ammo": 125, "reload": 150}
 
-var boost_prices: Dictionary[String, int] = {
-	"firerate": 125,
-	"ammo": 150,
-	"reload": 200
-}
+var boost_prices: Dictionary[String, int] = {"firerate": 125, "ammo": 150, "reload": 200}
+
 
 func _ready() -> void:
 	money_text.text = str(Globals.money_amount)
@@ -26,9 +19,12 @@ func _ready() -> void:
 	ammo_button.level = Globals.weapon_upgrades["ammo"]
 	reload_button.level = Globals.weapon_upgrades["reload"]
 
-	firerate_button.price = base_prices["firerate"] + (firerate_button.level * boost_prices["firerate"])
+	firerate_button.price = (
+		base_prices["firerate"] + (firerate_button.level * boost_prices["firerate"])
+	)
 	ammo_button.price = base_prices["ammo"] + (ammo_button.level * boost_prices["ammo"])
 	reload_button.price = base_prices["reload"] + (reload_button.level * boost_prices["reload"])
+
 
 func _on_shop_button_buy_pressed(button: ShopButton) -> void:
 	if Globals.money_amount < button.price:
@@ -52,6 +48,7 @@ func _on_shop_button_buy_pressed(button: ShopButton) -> void:
 	money_text.text = str(Globals.money_amount)
 
 	Globals.save_data()
+
 
 func _on_back_button_pressed() -> void:
 	Globals.save_data()

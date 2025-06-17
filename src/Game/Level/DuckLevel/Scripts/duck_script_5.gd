@@ -10,13 +10,10 @@ extends GameScript
 @onready var positions_up: Node2D = $PositionsUp
 @onready var positions_down: Node2D = $PositionsDown
 
-var spawn_points_up: Dictionary[Marker2D, Duck] = {
+var spawn_points_up: Dictionary[Marker2D, Duck] = {}
 
-}
+var spawn_points_down: Dictionary[Marker2D, Duck] = {}
 
-var spawn_points_down: Dictionary[Marker2D, Duck] = {
-
-}
 
 func activate() -> void:
 	super()
@@ -32,6 +29,7 @@ func activate() -> void:
 	left.start()
 	right.start()
 
+
 func deactivate_timers() -> void:
 	super()
 
@@ -39,6 +37,7 @@ func deactivate_timers() -> void:
 	spawn_down.stop()
 	left.stop()
 	right.stop()
+
 
 func select_type(duck: Duck) -> void:
 	if total_enemies % 15 == 0:
@@ -54,6 +53,7 @@ func select_type(duck: Duck) -> void:
 		duck.static_duration = 2.5
 		duck.speed = 1000
 
+
 func get_free_position(list: Dictionary[Marker2D, Duck]) -> Marker2D:
 	# Get the first available free position to spawn the enemy at.
 	var marker: Marker2D
@@ -65,6 +65,7 @@ func get_free_position(list: Dictionary[Marker2D, Duck]) -> Marker2D:
 
 	return marker
 
+
 func _on_killed(duck: Duck) -> void:
 	var key1: Marker2D = spawn_points_up.find_key(duck)
 	if key1 != null:
@@ -75,6 +76,7 @@ func _on_killed(duck: Duck) -> void:
 	if key2 != null:
 		spawn_points_down[key2] = null
 		return
+
 
 func _on_spawn_up_timeout() -> void:
 	var duck: Duck = spawn_enemy()
@@ -88,6 +90,7 @@ func _on_spawn_up_timeout() -> void:
 	duck.z_index = positions_up.z_index
 	game.add_child(duck)
 	duck.spawn_static()
+
 
 func _on_spawn_down_timeout() -> void:
 	var duck: Duck = spawn_enemy()
@@ -103,6 +106,7 @@ func _on_spawn_down_timeout() -> void:
 	duck.spawn_static()
 	duck.duck.flip_h = true
 
+
 func _on_left_timeout() -> void:
 	var duck: Duck = spawn_enemy()
 	select_type(duck)
@@ -111,6 +115,7 @@ func _on_left_timeout() -> void:
 	duck.global_position = duck_zone_2.global_position
 	duck.z_index = duck_zone_2.z_index
 	game.add_child(duck)
+
 
 func _on_right_timeout() -> void:
 	var duck: Duck = spawn_enemy()

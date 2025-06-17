@@ -37,11 +37,13 @@ var money_amount: int = 0
 
 var highscores: Dictionary = {}
 
+
 func _ready() -> void:
 	await SaveSystem.loaded
 
 	load_data()
 	save_data()
+
 
 func load_data() -> void:
 	master_volume = SaveSystem.get_var("master_volume", 100.0)
@@ -52,9 +54,14 @@ func load_data() -> void:
 	highscores = SaveSystem.get_var("highscores", DEFAULT_HIGHSCORES)
 	money_amount = SaveSystem.get_var("money", 0)
 
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_volume/100))
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_volume/100))
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfx_volume/100))
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Master"), linear_to_db(master_volume / 100)
+	)
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Music"), linear_to_db(music_volume / 100)
+	)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfx_volume / 100))
+
 
 func save_data() -> void:
 	SaveSystem.set_var("master_volume", master_volume)
@@ -66,6 +73,7 @@ func save_data() -> void:
 	SaveSystem.set_var("highscores", highscores)
 
 	SaveSystem.save()
+
 
 func reset_data() -> void:
 	master_volume = 100.0
@@ -82,6 +90,7 @@ func reset_data() -> void:
 
 	save_data()
 
+
 func start_up() -> void:
 	transition = Composer.setup_load_screen("res://src/Transition/CurtainTransition.tscn")
 	await transition.ready
@@ -90,8 +99,10 @@ func start_up() -> void:
 		Composer.load_scene("res://src/Menus/MainMenu/MainMenu.tscn")
 		transition.fade_out()
 
+
 func go_to_game(scene: String, data: Dictionary[String, Variant] = {}) -> void:
-	if transition != null: return
+	if transition != null:
+		return
 
 	transition = Composer.setup_load_screen("res://src/Transition/CurtainTransition.tscn")
 	await transition.ready
@@ -105,8 +116,10 @@ func go_to_game(scene: String, data: Dictionary[String, Variant] = {}) -> void:
 		transition.solo_fade_out()
 		await transition.finished_solo_fade_out
 
+
 func go_to_with_fade(scene: String, data: Dictionary[String, Variant] = {}) -> void:
-	if transition != null: return
+	if transition != null:
+		return
 
 	transition = Composer.setup_load_screen("res://src/Transition/CurtainTransition.tscn")
 	await transition.ready

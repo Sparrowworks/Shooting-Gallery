@@ -3,9 +3,8 @@ extends GameScript
 @onready var positions: Node2D = $Positions
 @onready var spawn_timer: Timer = $SpawnTimer
 
-var spawn_points: Dictionary[Marker2D, Target] = {
+var spawn_points: Dictionary[Marker2D, Target] = {}
 
-}
 
 func activate() -> void:
 	super()
@@ -15,10 +14,12 @@ func activate() -> void:
 
 	spawn_timer.start()
 
+
 func deactivate_timers() -> void:
 	super()
 
 	spawn_timer.stop()
+
 
 func get_free_position(list: Dictionary[Marker2D, Target]) -> Marker2D:
 	# Get the first available free position to spawn the enemy at.
@@ -30,6 +31,7 @@ func get_free_position(list: Dictionary[Marker2D, Target]) -> Marker2D:
 			break
 
 	return marker
+
 
 func select_type(target: Target) -> void:
 	if total_enemies % 20 == 0:
@@ -48,11 +50,13 @@ func select_type(target: Target) -> void:
 		target.type = 1
 		target.static_duration = 5
 
+
 func _on_killed(target: Target) -> void:
 	var key: Marker2D = spawn_points.find_key(target)
 	if key != null:
 		spawn_points[key] = null
 		return
+
 
 func _on_spawn_timer_timeout() -> void:
 	var target: Target = spawn_enemy()
