@@ -8,17 +8,12 @@ extends GameScript
 @onready var positions_right: Node2D = $PositionsRight
 @onready var positions_up: Node2D = $PositionsUp
 
-var spawn_points_left: Dictionary[Marker2D, Target] = {
+var spawn_points_left: Dictionary[Marker2D, Target] = {}
 
-}
+var spawn_points_right: Dictionary[Marker2D, Target] = {}
 
-var spawn_points_right: Dictionary[Marker2D, Target] = {
+var spawn_points_up: Dictionary[Marker2D, Target] = {}
 
-}
-
-var spawn_points_up: Dictionary[Marker2D, Target] = {
-
-}
 
 func activate() -> void:
 	super()
@@ -36,12 +31,14 @@ func activate() -> void:
 	right_timer.start()
 	up_timer.start()
 
+
 func deactivate_timers() -> void:
 	super()
 
 	left_timer.stop()
 	right_timer.stop()
 	up_timer.stop()
+
 
 func select_type(target: Target) -> void:
 	if total_enemies % 15 == 0:
@@ -60,6 +57,7 @@ func select_type(target: Target) -> void:
 		target.type = 1
 		target.speed = 800
 
+
 func get_free_position(list: Dictionary[Marker2D, Target]) -> Marker2D:
 	# Get the first available free position to spawn the enemy at.
 	var marker: Marker2D
@@ -70,6 +68,7 @@ func get_free_position(list: Dictionary[Marker2D, Target]) -> Marker2D:
 			break
 
 	return marker
+
 
 func _on_killed(target: Target) -> void:
 	var key1: Marker2D = spawn_points_left.find_key(target)
@@ -87,6 +86,7 @@ func _on_killed(target: Target) -> void:
 		spawn_points_up[key3] = null
 		return
 
+
 func _on_left_timer_timeout() -> void:
 	var target: Target = spawn_enemy()
 	target.enemy_killed.connect(_on_killed)
@@ -101,6 +101,7 @@ func _on_left_timer_timeout() -> void:
 	game.add_child(target)
 	target.animation_player.play("Show")
 
+
 func _on_right_timer_timeout() -> void:
 	var target: Target = spawn_enemy()
 	target.enemy_killed.connect(_on_killed)
@@ -114,6 +115,7 @@ func _on_right_timer_timeout() -> void:
 	target.z_index = positions_left.z_index
 	game.add_child(target)
 	target.animation_player.play("Show")
+
 
 func _on_up_timer_timeout() -> void:
 	var target: Target = spawn_enemy()

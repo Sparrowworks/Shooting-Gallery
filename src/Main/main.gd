@@ -9,6 +9,7 @@ class_name Main extends Control
 @onready var grass: Parallax2D = $Grass
 @onready var grass_2: Parallax2D = $Grass2
 
+
 func _ready() -> void:
 	Globals.main = self
 	Globals.menu_theme = menu_theme
@@ -30,12 +31,14 @@ func _ready() -> void:
 	show_water()
 	Globals.start_up()
 
+
 func show_water() -> void:
 	water.show()
 	water_2.show()
 
 	grass.hide()
 	grass_2.hide()
+
 
 func show_grass() -> void:
 	grass.show()

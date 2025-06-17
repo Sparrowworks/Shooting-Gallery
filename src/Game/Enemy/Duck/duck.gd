@@ -8,8 +8,10 @@ class_name Duck extends Enemy
 
 @onready var duck: AnimatedSprite2D = $MainPivot/StickPivot/Stick/DuckPivot/Duck
 
+
 func on_ready() -> void:
 	set_animation()
+
 
 func set_animation() -> void:
 	match type:
@@ -26,6 +28,7 @@ func set_animation() -> void:
 			duck.animation = "white"
 			cpu_particles_2d.texture = duck.sprite_frames.get_frame_texture("white", 0)
 
+
 func spawn_static() -> void:
 	hide()
 	is_static = true
@@ -38,9 +41,11 @@ func spawn_static() -> void:
 
 	super()
 
+
 func gone() -> void:
 	direction = Vector2.ZERO
 	animation_player.play("hide")
+
 
 func on_enemy_gone() -> void:
 	super()
@@ -48,6 +53,7 @@ func on_enemy_gone() -> void:
 	animation_player.play("hide")
 	await animation_player.animation_finished
 	queue_free()
+
 
 func kill(quiet_kill: bool = false) -> void:
 	super()

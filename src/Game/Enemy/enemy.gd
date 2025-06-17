@@ -1,6 +1,6 @@
 class_name Enemy extends Node2D
 
-signal preloaded()
+signal preloaded
 signal enemy_killed(enemy: Enemy)
 signal enemy_gone(enemy: Enemy)
 
@@ -28,6 +28,7 @@ static var KILL_SCENE: PackedScene = preload("res://src/Game/Enemy/KillLabel/Kil
 
 var is_being_targeted: bool = false
 
+
 func game_preload() -> void:
 	# Prevents lag by preloading sounds
 	shoot_sound.volume_db = linear_to_db(0.0)
@@ -40,6 +41,7 @@ func game_preload() -> void:
 	await cpu_particles_2d.finished
 	preloaded.emit()
 
+
 func _ready() -> void:
 	set_physics_process(!is_static)
 	set_process_input(false)
@@ -49,41 +51,52 @@ func _ready() -> void:
 
 	on_ready()
 
+
 func on_ready() -> void:
 	# Allow setting up stuff in _ready without overriding it again
 	pass
+
 
 func _physics_process(delta: float) -> void:
 	# Only move the enemy if it isn't a static one
 	global_position += direction * speed * delta
 
+
 func _on_area_2d_mouse_entered() -> void:
 	is_being_targeted = true
+
 
 func _on_area_2d_mouse_exited() -> void:
 	is_being_targeted = false
 
+
 func _on_gone_timer_timeout() -> void:
 	on_enemy_gone()
 
+
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	on_enemy_gone()
+
 
 func _on_weapon_fired(bullets: int) -> void:
 	if is_being_targeted:
 		kill()
 
+
 func spawn_static() -> void:
 	gone_timer.wait_time = static_duration
 	gone_timer.start()
+
 
 func gone() -> void:
 	# Called when Time Attack mode is ending.
 	pass
 
+
 func on_enemy_gone() -> void:
 	# This is called when the enemy goes off-screen or when the static time has ended
 	enemy_gone.emit(self)
+
 
 func kill() -> void:
 	shoot_sound.play()

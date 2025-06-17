@@ -1,6 +1,6 @@
 class_name Game extends Node2D
 
-signal game_paused()
+signal game_paused
 
 @onready var scripts_node: Node = $Scripts
 @onready var ui: GameUI = $CanvasLayer/UI
@@ -30,6 +30,7 @@ var killed: int = 0
 var total_shots: int = 0
 var correct_shots: int = 0
 var accuracy: int = 0
+
 
 func _ready() -> void:
 	kill_input()
@@ -100,9 +101,11 @@ func _ready() -> void:
 
 	activate_next_script()
 
+
 func kill_input() -> void:
 	set_process(false)
 	set_process_input(false)
+
 
 func load_background(type: int) -> void:
 	match type:
@@ -110,6 +113,7 @@ func load_background(type: int) -> void:
 			Globals.main.show_water()
 		2:
 			Globals.main.show_grass()
+
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("quit"):
@@ -123,18 +127,27 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = true
 		game_paused.emit()
 
+
 func _process(delta: float) -> void:
 	# Detect if a player is holding down the reset button in order to restart or if he just wants to reload the weapon
 	if Input.is_action_pressed("reset"):
 		if restart_timer.time_left <= 0:
 			restart_timer.start()
 
-		ui.set_restart_bar(int(((restart_timer.wait_time-restart_timer.time_left)/restart_timer.wait_time)*100))
+		ui.set_restart_bar(
+			int(
+				(
+					((restart_timer.wait_time - restart_timer.time_left) / restart_timer.wait_time)
+					* 100
+				)
+			)
+		)
 	else:
 		if restart_timer.time_left > 0:
 			ui.set_restart_bar(0)
 			restart_timer.stop()
 			weapon.start_reload()
+
 
 func activate_next_script() -> void:
 	# Grab the first script and activate it
@@ -156,6 +169,7 @@ func activate_next_script() -> void:
 
 	active_script.activate()
 
+
 func game_over() -> void:
 	accuracy = clampi(roundi((correct_shots * 100) / total_shots), 0, 100)
 
@@ -164,19 +178,34 @@ func game_over() -> void:
 
 	await get_tree().create_timer(1).timeout
 	Input.set_custom_mouse_cursor(null)
-	Globals.go_to_with_fade("res://src/Menus/GameOver/GameOver.tscn", {"title": level_file.level_title, "score": ui.score_text_value, "accuracy": accuracy, "time": time, "rank": ui.rank_value, "id": level_file.level_id, "ta": is_ta})
+	Globals.go_to_with_fade(
+		"res://src/Menus/GameOver/GameOver.tscn",
+		{
+			"title": level_file.level_title,
+			"score": ui.score_text_value,
+			"accuracy": accuracy,
+			"time": time,
+			"rank": ui.rank_value,
+			"id": level_file.level_id,
+			"ta": is_ta
+		}
+	)
+
 
 func _on_weapon_weapon_fired(bullets_left: int) -> void:
 	total_shots += 1
 	ui.set_bullets(bullets_left, weapon.max_bullets)
 
+
 func _on_weapon_weapon_reloaded() -> void:
 	ui.set_bullets(weapon.max_bullets, weapon.max_bullets)
+
 
 func _on_script_finished(script: GameScript) -> void:
 	await get_tree().create_timer(1).timeout
 
 	activate_next_script()
+
 
 func _on_enemy_killed(enemy: Enemy) -> void:
 	correct_shots += 1
@@ -192,10 +221,12 @@ func _on_enemy_killed(enemy: Enemy) -> void:
 
 	ui.score_to_update += total_score
 
+
 func _on_ui_start_finished() -> void:
 	# Allow collecting input from the player after we finish initializing and start-up
 	set_process(true)
 	set_process_input(true)
+
 
 func _on_ui_ta_gameover() -> void:
 	# Prevent causing more gameovers in a row
@@ -207,12 +238,13 @@ func _on_ui_ta_gameover() -> void:
 	await get_tree().create_timer(1).timeout
 
 	active_script._on_duration_timeout()
-	get_tree().call_group("enemies", "gone") # Hide all present enemies
+	get_tree().call_group("enemies", "gone")  # Hide all present enemies
 	weapon.deactivate()
 
 	await get_tree().create_timer(0.5).timeout
 
 	game_over()
+
 
 func _on_pause_ui_game_unpaused() -> void:
 	get_tree().paused = false
@@ -221,10 +253,12 @@ func _on_pause_ui_game_unpaused() -> void:
 	await get_tree().create_timer(0.5).timeout
 	set_process_input(true)
 
+
 func _on_time_timer_timeout() -> void:
 	time += 1
 
 	ui.set_time(time)
+
 
 func _on_restart_timer_timeout() -> void:
 	ui.set_restart_bar(0)

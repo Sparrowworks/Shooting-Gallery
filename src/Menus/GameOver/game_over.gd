@@ -9,6 +9,7 @@ extends Control
 @onready var hi_text: Label = %HIText
 @onready var win_theme: AudioStreamPlayer = $WinTheme
 
+
 func _ready() -> void:
 	var time: int = get_meta("time") as int
 	var accuracy: int = get_meta("accuracy") as int
@@ -48,6 +49,7 @@ func _ready() -> void:
 
 	win_theme.play()
 
+
 func set_rank() -> void:
 	var rank: int = get_meta("rank") as int
 
@@ -71,6 +73,7 @@ func set_rank() -> void:
 			rank_text.text = "Rank: Platinum"
 			rank_text.add_theme_color_override("font_outline_color", Color.SKY_BLUE)
 
+
 func set_ta_rank() -> void:
 	var rank: int = get_meta("rank") as int
 
@@ -91,8 +94,10 @@ func set_ta_rank() -> void:
 			rank_text.text = "Rank: Platinum"
 			rank_text.add_theme_color_override("font_outline_color", Color.SKY_BLUE)
 
+
 func get_coins(score: int) -> int:
 	return int(score / 100 * 0.65)
+
 
 func get_ta_coins(rank: int) -> int:
 	match rank:
@@ -107,6 +112,7 @@ func get_ta_coins(rank: int) -> int:
 		_:
 			return 0
 
+
 func check_highscore(score: int, ta: bool) -> void:
 	var score_id: String
 	if ta:
@@ -119,12 +125,14 @@ func check_highscore(score: int, ta: bool) -> void:
 
 		hi_text.show()
 
+
 func check_accuracy(accuracy: int) -> void:
 	var acc_id: String = get_meta("id") + "_acc"
 	var cur_acc: int = Globals.highscores.get(acc_id, 0)
 
 	if cur_acc < accuracy:
 		Globals.highscores[acc_id] = accuracy
+
 
 func _on_back_button_pressed() -> void:
 	Globals.go_to_with_fade("res://src/Menus/LevelSelect/LevelSelect.tscn")

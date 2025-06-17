@@ -1,7 +1,7 @@
 class_name LevelButton extends VBoxContainer
 
-signal next_pressed()
-signal prev_pressed()
+signal next_pressed
+signal prev_pressed
 signal normal_pressed(id: int)
 signal ta_pressed(id: int)
 
@@ -55,12 +55,14 @@ signal ta_pressed(id: int)
 @onready var ta_rank_text: Label = %TaRankText
 @onready var accuracy_text: Label = %AccuracyText
 
+
 func _ready() -> void:
 	highscore_text.text = "Highscore: " + str(highscore)
 	ta_highscore_text.text = "TA Fastest Time: " + str(ta_highscore)
 	accuracy_text.text = "Highest accuracy: " + str(max_accuracy) + "%"
 
 	set_rank_text()
+
 
 func set_rank_text() -> void:
 	match rank:
@@ -97,16 +99,20 @@ func set_rank_text() -> void:
 			ta_rank_text.text = "TA Rank: Platinum"
 			ta_rank_text.add_theme_color_override("font_outline_color", Color.SKY_BLUE)
 
+
 func _on_left_button_pressed() -> void:
 	Globals.button_click.play()
 	next_pressed.emit()
+
 
 func _on_right_button_pressed() -> void:
 	Globals.button_click.play()
 	prev_pressed.emit()
 
+
 func _on_normal_button_pressed() -> void:
 	normal_pressed.emit(level_id)
+
 
 func _on_ta_button_pressed() -> void:
 	ta_pressed.emit(level_id)
